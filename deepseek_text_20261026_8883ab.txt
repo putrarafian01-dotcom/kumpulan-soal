@@ -1,0 +1,5 @@
+/data/
+├── app.db            ← team, kode email, pairs (upload Excel)
+├── soal.db           ← bank besar (dari upload / seed)
+├── soal-upload/      ← file sementara upload chunked
+└── queue/            ← file antrian Excel (persist)

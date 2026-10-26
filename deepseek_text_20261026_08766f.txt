@@ -1,0 +1,25 @@
+
+## Deploy — 3 pilihan
+
+### A. Railway (paling mudah, gratis $5/bulan)
+1. Upload folder ini ke GitHub.
+2. railway.app → New Project → Deploy from GitHub.
+3. Variables: `SESSION_SECRET`, `SMTP_USER`, `SMTP_PASS`, `ANTHROPIC_API_KEY`, `NODE_ENV=production`.
+4. Generate Domain → dapat URL `https://xxx.up.railway.app`.
+5. Login `2677SHANUM` → ⚙️ Panel Admin → ganti password.
+
+### B. Coolify (VPS sendiri, gratis)
+1. Install Coolify di VPS: `curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash`
+2. Coolify dashboard → New Resource → **Docker Compose** → connect repo GitHub.
+3. Set env (`SESSION_SECRET`, `SMTP_USER`, dst).
+4. Deploy. Coolify otomatis build dari `docker-compose.yml`.
+5. HTTPS otomatis (Let's Encrypt).
+
+### C. VPS manual (Linux)
+```bash
+git clone https://github.com/USERNAME/REPO.git
+cd REPO
+cp .env.example .env
+nano .env                          # isi SESSION_SECRET, SMTP_USER, dll
+docker compose up -d --build
+# akses http://IP-VPS:3000
